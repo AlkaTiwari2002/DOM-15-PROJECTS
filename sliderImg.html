@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <style>
+      body{
+        background-color: rgb(25, 167, 167);
+      }
+      .slider-container {
+        border: 3px solid black;
+        width: 60rem;
+        margin: 0 auto;
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        margin-top: 4rem;
+        box-shadow: 20px 20px 20px black;
+      }
+      .slide {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        transition: all 0.25s ease-in-out;
+      }
+      img{
+        height: 606px;
+        width: 960px;
+      }
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 0.75rem;
+      }
+      .prevBtn,
+      .nextBtn {
+        background-color: rgb(71, 71, 248);
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        margin: 10px;
+        letter-spacing: 2px;
+        transition: var(--transition);
+      }
+      .prevBtn:hover,
+      .nextBtn:hover {
+        color:burlywood;
+      }
+
+      @media screen and (min-width: 576px) {
+        .slider-container {
+          height: 45vh;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        .slider-container {
+          height: 55vh;
+        }
+      }
+      @media screen and (min-width: 992px) {
+        .slider-container {
+          height: 65vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-container">
+      <div class="slide">
+        <img src="./Images/slider4.jpeg" class="slide-img" alt="" />
+      </div>
+      <div class="slide">
+        <img src="./Images/slider2.jpeg" class="slide-img" alt="" />
+      </div>
+      <div class="slide">
+        <img src="./Images/slider3.jpeg" class="slide-img" alt="" />
+      </div>
+      <div class="slide">
+        <img src="./Images/slider1.jpeg" class="slide-img" alt="" />
+      </div>
+      <div class="slide">
+        <img src="./Images/slider5.jpeg" class="slide-img" alt="" />
+      </div>
+      <div class="slide">
+        <img src="./Images/slider6.jpeg" class="slide-img" alt="" />
+      </div>
+    </div>
+    <div class="btn-container">
+      <button type="button" class="prevBtn">Prev</button>
+      <button type="button" class="nextBtn">Next</button>
+    </div>
+    
+    <script>
+        const slides = document.querySelectorAll(".slide");
+const nextBtn = document.querySelector(".nextBtn");
+const prevBtn = document.querySelector(".prevBtn");
+slides.forEach(function (slide, index) {
+  slide.style.left = `${index * 100}%`;
+});
+let counter = 0;
+nextBtn.addEventListener("click", function () {
+  counter++;
+  carousel();
+});
+
+prevBtn.addEventListener("click", function () {
+  counter--;
+  carousel();
+});
+
+function carousel() {
+  if (counter < slides.length - 1) {
+    nextBtn.style.display = "block";
+  } else {
+    nextBtn.style.display = "none";
+  }
+  if (counter > 0) {
+    prevBtn.style.display = "block";
+  } else {
+    prevBtn.style.display = "none";
+  }
+  slides.forEach(function (slide) {
+    slide.style.transform = `translateX(-${counter * 100}%)`;
+  });
+}
+
+prevBtn.style.display = "none";
+    </script>
+  </body>
+</html>

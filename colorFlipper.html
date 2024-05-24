@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Flipper</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .container {
+        margin-bottom: 20px;
+      }
+
+      #background {
+        background-color: black;
+        color: white;
+        height: 50px;
+        width: 530px;
+        font-size: 30px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #btn {
+        padding: 10px 20px;
+        font-size: 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+      #btn:hover {
+        background-color: #359bc1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="background">Background Color :</div>
+    </div>
+    <button id="btn">Click Me</button>
+  </body>
+  <script>
+    let btn = document.getElementById("btn");
+    let display = document.getElementById("background");
+    btn.addEventListener("click", changeBackgroundColor);
+
+    function changeBackgroundColor() {
+      let redcolor = Math.floor(Math.random() * 256);
+      let greencolor = Math.floor(Math.random() * 256);
+      let bluecolor = Math.floor(Math.random() * 256);
+
+      let color = `rgb(${redcolor}, ${greencolor}, ${bluecolor})`;
+      document.body.style.backgroundColor = color;
+      display.innerHTML = `Background Color: ${color}`;
+    }
+  </script>
+</html>

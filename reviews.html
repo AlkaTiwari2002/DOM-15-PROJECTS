@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Reviews</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #efeded;
+}
+.container {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(252, 214, 165);
+}
+img {
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+}
+h4 {
+    margin: 10px 0;
+}
+.button-container {
+    margin-top: 20px;
+}
+.button-container button {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.button-container button:hover {
+    background-color: #ddd;
+}
+.random-btn {
+    width: 30%;
+    background-color:rgb(167, 124, 68);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+.random-btn:hover {
+    background-color:rgb(127, 186, 226);
+}
+    </style>
+</head>
+<script src="https://kit.fontawesome.com/ca5d375637.js" crossorigin="anonymous"></script>
+<body>
+    <div class="container">
+        <h2>Our Reviews</h2>
+        <img src=" " id="img" alt="person image">
+        <h4 id="person"></h4>
+        <p id="job"></p>
+        <p id="info"></p>
+        <div class="button-container">
+            <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <button class="random-btn">Surprise me</button>
+    </div>
+    <script>
+        const reviews = [
+    {
+        id: 1,
+        name: "Kalpana Chawla",
+        job: "Indian-American astronaut",
+        img: "Images/kalpana.jpeg",
+        text: "Kalpana Chawla was an Indian-American astronaut and aerospace engineer, born on March 17, 1962, in Karnal, India. She became the first woman of Indian origin to go to space. Chawla flew on two space missions: STS-87 in 1997 and STS-107 in 2003. Tragically, she and her six crewmates perished when the Space Shuttle Columbia disintegrated upon re-entry in 2003. She held the position of mission specialist and primary robotic arm operator. Chawla's legacy continues to inspire aspiring astronauts and engineers worldwide."
+    },
+    {
+        id: 2,
+        name: "Indira Gandhi",
+        job: "The Prime Minister of India",
+        img: "Images/Indira.jpeg",
+        text: "Indira Gandhi was an influential Indian politician who served as the Prime Minister of India. Born on November 19, 1917, she was the daughter of Jawaharlal Nehru, India’s first Prime Minister. Indira Gandhi was the first and, to date, the only female Prime Minister of India, serving from 1966 to 1977 and then again from 1980 until her assassination in 1984. She is known for her centralizing policies, the Emergency period, and efforts to modernize the Indian economy."
+    },
+    {
+        id:3,
+        name:"Mother Teresa",
+        job:"Founder, Leader",
+        img:"Images/Mother.jpeg",
+        text:"Mother Teresa, born Anjezë Gonxhe Bojaxhiu on August 26, 1910, in Skopje, was a Catholic nun and missionary renowned for her charitable work. She founded the Missionaries of Charity in 1950 in Kolkata, India, focusing on helping the poor, sick, and dying. Mother Teresa received the Nobel Peace Prize in 1979 for her humanitarian efforts. She was canonized as Saint Teresa of Calcutta by the Catholic Church in 2016."
+    },
+    {
+        id:4,
+        name:"Lata Mangeshkar",
+        job:"Iconic Singer",
+        img:"Images/lata.jpg",
+        text:"Lata Mangeshkar was an iconic Indian playback singer, born on September 28, 1929. Renowned for her melodious voice, she recorded thousands of songs in various Indian languages over a career spanning seven decades. She was one of India's most revered and influential vocalists."
+    }
+
+];
+
+const img = document.getElementById("img");
+const author = document.getElementById("person");
+const job = document.getElementById("job");
+const info = document.getElementById("info");
+
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
+const randomBtn = document.querySelector(".random-btn");
+
+let currentItem = 0;
+
+window.addEventListener("DOMContentLoaded", function() {
+    showPerson(currentItem);
+});
+
+function showPerson(person) {
+    const item = reviews[person];
+    img.src = item.img;
+    author.textContent = item.name;
+    job.textContent = item.job;
+    info.textContent = item.text;
+}
+
+nextBtn.addEventListener('click', function() {
+    currentItem++;
+    if (currentItem >= reviews.length) {
+        currentItem = 0;
+    }
+    showPerson(currentItem);
+});
+
+prevBtn.addEventListener('click', function() {
+    currentItem--;
+    if (currentItem < 0) {
+        currentItem = reviews.length - 1;
+    }
+    showPerson(currentItem);
+});
+
+randomBtn.addEventListener('click', function() {
+    currentItem = Math.floor(Math.random() * reviews.length);
+    showPerson(currentItem);
+});
+    </script>
+</body>
+</html>

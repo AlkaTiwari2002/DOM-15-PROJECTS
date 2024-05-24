@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #nav {
+            position: fixed;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 98%;
+            padding: 10px;
+            border: 2px solid black;
+            background-color: white;
+            z-index: 1000;
+        }
+        ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-item {
+            font-size: 22px;
+        }
+        .nav-item a {
+            text-decoration: none;
+            color: black;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        #home {
+            background: linear-gradient(rgba(63, 208, 212, 0.2), rgba(0, 0, 0, 0.7)),
+            url(./Images/TajMahal.avif) center/cover no-repeat;
+        }
+        #about {
+            background: linear-gradient(rgba(63, 208, 212, 0.3), rgba(0, 0, 0, 0.7)),
+            url(./Images/slider3.jpeg) center/cover no-repeat;
+        }
+        #services {
+            background: linear-gradient(rgba(63, 208, 212, 0.5), rgba(0, 0, 0, 0.7)),
+            url(./Images/hills.jpeg) center/cover no-repeat;
+        }
+        #order {
+            background: linear-gradient(rgba(63, 208, 212, 0.3), rgba(0, 0, 0, 0.7)),
+            url(./Images/slider2.jpeg) center/cover no-repeat;
+        }
+        @media screen and (max-width: 699px) {
+            .links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+            .links.active {
+                display: flex;
+            }
+            .btn {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 30px;
+                cursor: pointer;
+            }
+        }
+        .footer {
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+        }
+        img {
+            width: 130px;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/1ce671e465.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav id="nav">
+        <img src="./Images/code.jpeg" alt="logo" style="height: 39px;">
+        <div class="list">
+            <ul class="links">
+                <li class="nav-item">
+                    <a href="#home" class="scroll-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="scroll-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="scroll-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#order" class="scroll-link">Order</a>
+                </li>
+            </ul>
+        </div>
+        <button class="btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <header>
+        <div id="home" class="section">
+            <h1>Our HOME</h1>
+        </div>
+        <div id="about" class="section">
+            <h1>Our ABOUT</h1>
+        </div>
+        <div id="services" class="section">
+            <h1>Our SERVICES</h1>
+        </div>
+        <div id="order" class="section">
+            <h1>Our ORDER</h1>
+        </div>
+    </header>
+    <footer class="footer">
+        <p>Copyright &copy; Backroads Travel Tours Company <span class="date">2020</span>. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const button = document.querySelector('.btn');
+            const links = document.querySelector('.links');
+
+            button.addEventListener('click', function () {
+                links.classList.toggle('active');
+            });
+            
+            document.querySelectorAll('.scroll-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - document.querySelector('#nav').offsetHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

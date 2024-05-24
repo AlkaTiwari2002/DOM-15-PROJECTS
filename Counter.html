@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        *{
+            margin: 0%;
+        }
+        .container{
+            background-color: burlywood;
+            height: 100vh;
+            display: flex;
+            text-align:center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        .main{
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        button{
+            padding: 10px;
+            margin: 20px;
+            font-size: 25px;
+            border-radius: 10px;
+            background-color: rgb(8, 130, 211);
+            color: white;
+        }
+        button:hover{
+            background-color: rgb(80, 169, 232);
+        }
+        #zero{
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main">Counter</h1>
+        <span id="zero">0</span>
+        <div class="btn-container">
+            <button class="btn decrease">DECREASE</button>
+            <button class="btn reset">RESET</button>
+            <button class="btn increase">INCREASE</button>
+        </div>
+    </div>
+    <script>
+        let count = 0;
+        let value = document.querySelector("#zero");
+        let btns = document.querySelectorAll(".btn");
+
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function(e) {
+                let style = e.currentTarget.classList;
+                if (style.contains('decrease')) {
+                    count--;
+                } else if (style.contains('increase')) {
+                    count++;
+                } else {
+                    count = 0;
+                }
+
+                if (count > 0) {
+                    value.style.color = "green";
+                } else if (count < 0) {
+                    value.style.color = "red";
+                } else {
+                    value.style.color = '';
+                }
+
+                value.textContent = count;
+            });
+        });
+    </script>
+</body>
+</html>

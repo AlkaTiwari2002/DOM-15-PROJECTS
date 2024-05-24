@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .menu {
+        padding: 5rem 0;
+        background: #fff;
+      }
+      .title {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .title h2{
+        text-transform: uppercase;
+        font-size: 30px;
+      }
+      .underline {
+        width: 5rem;
+        height: 0.25rem;
+        background: #d4af37;
+        margin: 0 auto;
+      }
+      .btn-container {
+        margin-bottom: 4rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        background: transparent;
+        border: 2px solid #d4af37;
+        font-size: 1rem;
+        text-transform: capitalize;
+        margin: 0.5rem;
+        padding: 0.375rem 0.75rem;
+        color: #d4af37;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        border-radius: 0.5rem;
+      }
+      .filter-btn:hover {
+        background: #d4af37;
+        color: #fff;
+      }
+      .section-center {
+        width: 90vw;
+        margin: 0 auto;
+        max-width: 1170px;
+        display: grid;
+        gap: 3rem 2rem;
+      }
+      .menu-item {
+        background: #fff;
+        border-radius: 0.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s linear;
+        overflow: hidden;
+      }
+      .menu-item:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      .photo {
+        width: 100%;
+        height: 250px; /* Increased height for images */
+        object-fit: cover;
+        border-bottom: 0.25rem solid #d4af37;
+      }
+      .item-info {
+        padding: 1rem 1.5rem;
+      }
+      .item-info header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 0.5px dotted #9a9a9a;
+        margin-bottom: 0.5rem;
+      }
+      .item-info h4 {
+        margin-bottom: 0.5rem;
+      }
+      .price {
+        color: #d4af37;
+      }
+      .item-text {
+        margin-bottom: 0;
+        padding-top: 1rem;
+      }
+      @media screen and (min-width: 768px) {
+        .section-center {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .photo {
+          height: 250px; 
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        .section-center {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .photo {
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="menu">
+      <div class="title">
+        <h2>our menu</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="btn-container">
+        <button type="button" class="filter-btn" data-id="all">all</button>
+        <button type="button" class="filter-btn" data-id="breakfast">
+          breakfast
+        </button>
+        <button type="button" class="filter-btn" data-id="lunch">lunch</button>
+        <button type="button" class="filter-btn" data-id="shakes">
+          shakes
+        </button>
+        <button type="button" class="filter-btn" data-id="dinner">
+          dinner
+        </button>
+      </div>
+      <div class="section-center"></div>
+    </section>
+    <script>
+        const menu = [
+          {
+            id: 1,
+            title: "buttermilk pancakes",
+            category: "breakfast",
+            price: 15.99,
+            img: "./menu/item-1.jpeg",
+            desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed`,
+          },
+          {
+            id: 2,
+            title: "diner double",
+            category: "lunch",
+            price: 13.99,
+            img: "./menu/lunch3.jpeg",
+            desc: `Vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats`,
+          },
+          {
+            id: 3,
+            title: "godzilla milkshake",
+            category: "shakes",
+            price: 6.99,
+            img: "./menu/item-6.jpeg",
+            desc: `Kombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+          },
+          {
+            id: 4,
+            title: "country delight",
+            category: "breakfast",
+            price: 20.99,
+            img: "./menu/item-2.jpeg",
+            desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut.`,
+          },
+          {
+            id: 5,
+            title: "egg attack",
+            category: "lunch",
+            price: 22.99,
+            img: "./menu/item-4.jpeg",
+            desc: `Franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up.`,
+          },
+          {
+            id: 6,
+            title: "oreo dream",
+            category: "shakes",
+            price: 18.99,
+            img: "./menu/item-3.jpeg",
+            desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday.`,
+          },
+          {
+            id: 7,
+            title: "bacon overflow",
+            category: "breakfast",
+            price: 8.99,
+            img: "./menu/item-7.jpeg",
+            desc: `Carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird.`,
+          },
+          {
+            id: 8,
+            title: "american classic",
+            category: "lunch",
+            price: 12.99,
+            img: "./menu/item-10.jpeg",
+            desc: `On it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut.`,
+          },
+          {
+            id: 9,
+            title: "quarantine buddy",
+            category: "shakes",
+            price: 16.99,
+            img: "./menu/item-8.jpeg",
+            desc: `Skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+          },
+          {
+            id: 10,
+            title: "bison steak",
+            category: "dinner",
+            price: 22.99,
+            img: "./menu/shakes1.jpeg",
+            desc: `Skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+          },
+          {
+            id: 11,
+            title: "salmon salad",
+            category: "dinner",
+            price: 19.99,
+            img: "./menu/dinner1.jpeg",
+            desc: `Salmon salad with fresh greens, cherry tomatoes, and a light vinaigrette.`,
+          },
+        {
+        id: 12,
+        title: "filet mignon",
+        category: "dinner",
+        price: 29.99,
+        img: "./menu/dinner2.jpeg",
+        desc: `Tender filet mignon served with mashed potatoes and asparagus.`,
+      },
+      {
+        id: 13,
+        title: "vegetarian sandwich",
+        category: "dinner",
+        price: 18.99,
+        img: "./menu/dinner3.jpeg",
+        desc: `Delicious vegetarian pasta made with fresh tomatoes, basil, and mozzarella.`,
+      },
+        ];
+
+        const sectionCenter = document.querySelector(".section-center");
+        const btnContainer = document.querySelector(".btn-container");
+
+        window.addEventListener("DOMContentLoaded", () => {
+          displayMenuItems(menu);
+          displayMenuButtons();
+        });
+
+        function displayMenuItems(menuItems) {
+          sectionCenter.innerHTML = menuItems.map(item => `
+            <article class="menu-item">
+              <img src=${item.img} alt=${item.title} class="photo" />
+              <div class="item-info">
+                <header>
+                  <h4>${item.title}</h4>
+                  <h4 class="price">$${item.price}</h4>
+                </header>
+                <p class="item-text">${item.desc}</p>
+              </div>
+            </article>
+          `).join("");
+        }
+
+        function displayMenuButtons() {
+          const categories = ['all', ...new Set(menu.map(item => item.category))];
+          btnContainer.innerHTML = categories.map(category => `
+            <button type="button" class="filter-btn" data-id=${category}>
+              ${category}
+            </button>
+          `).join("");
+
+          btnContainer.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+              const category = e.currentTarget.dataset.id;
+              const menuCategory = category === "all" ? menu : menu.filter(item => item.category === category);
+              displayMenuItems(menuCategory);
+            });
+          });
+        }
+    </script>
+  </body>
+</html>

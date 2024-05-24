@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: burlywood;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 4rem;
+            gap: 2rem;
+        }
+        .form{
+            font-size: 25px;
+        }
+        #para{
+            font-size: 23px;
+            border-radius: 8px;
+
+        }
+        .btn{
+            padding: 6px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            background-color: rgb(39, 39, 235);
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TIRED OF BORING LOREM IPSUM ?</h1>
+        <form class="form">
+            <label>Paragraphs:</label>
+            <input type="number" name="Paragraphs" id="para" placeholder="">
+            <button type="submit" class="btn">Generate</button>
+        </form>
+        <article class="text"></article>
+    </div>
+    <p>   
+    </p>
+    <script>
+        const text = [ `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Aperiam quos ipsum architecto distinctio laborum ut placeat voluptatibus 
+        beatae, voluptas debitis amet consequuntur, facilis nihil tenetur fugit 
+        dolorem quisquam incidunt. Sit, architecto nam dolorem expedita quia 
+        consectetur minima minus illum maiores praesentium quo! Eum optio, 
+        deserunt perspiciatis ut odit asperiores in commodi non. Obcaecati ex 
+        nesciunt totam impedit fugit magni officiis, voluptas maiores aliquid qui 
+        nam? Reiciendis ea nobis ipsa quibusdam sunt corrupti. Voluptate et magni 
+        nulla error provident! Sint, sit.`,
+        `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum dolores 
+        consectetur adipisci nam repudiandae aperiam deserunt numquam voluptatem 
+        tempore quam corrupti fugiat suscipit nesciunt itaque magnam sapiente labore 
+        ex nostrum repellendus nulla quos laudantium, laboriosam incidunt! Dicta, 
+        cumque accusamus, numquam nulla libero, voluptatum nihil deleniti quaerat 
+        neque hic minima ratione maiores iure? Molestias reprehenderit ab quas mollitia 
+        fugit porro, vitae autem esse exercitationem, alias necessitatibus. Nostrum aut 
+        provident pariatur, error doloremque necessitatibus animi perferendis voluptates 
+        hic exercitationem voluptatum ducimus, in excepturi. Voluptatibus, suscipit? 
+        Accusamus quae, necessitatibus quibusdam, architecto repellendus laboriosam 
+        temporibus velit ipsum suscipit saepe voluptatum! Aut perspiciatis omnis adipisci?`,
+        `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro eum veniam, 
+        ipsa voluptatum similique sequi, quos quasi officiis neque consequuntur 
+        ducimus soluta necessitatibus. Eaque incidunt veritatis voluptatum dolorum 
+        ad, cum vel aliquam quod magni totam velit quis sequi suscipit qui inventore 
+        sit? Accusantium est consectetur maxime quisquam tempora doloremque et ad rerum 
+        officiis exercitationem velit quibusdam, optio corporis mollitia. Quam libero unde 
+        odio quasi officiis quas! Voluptatem vitae magni blanditiis neque. Tempore recusandae 
+        molestiae id dignissimos, ad fugiat reprehenderit quae voluptatum, voluptatem eaque 
+        dicta voluptas et atque ullam temporibus fuga eveniet?`,
+        `Aliquam autem accusamus earum tempore cupiditate velit magnam? Veritatis 
+        ex aperiam minima, ratione commodi rem quidem corporis delectus ullam 
+        architecto iusto eveniet unde ab excepturi ipsa doloribus in, perspiciatis 
+        dolor nostrum quod. Fugit magnam sapiente, maiores commodi voluptatum provident 
+        earum in error, eaque obcaecati, laudantium non reiciendis quo dolor fugiat animi 
+        et sequi ipsa. Quaerat velit, sunt reiciendis mollitia neque soluta saepe. 
+        Facere corporis molestias illum saepe. Rem assumenda alias consequuntur saepe ipsa 
+        quo, aperiam, sapiente, iste temporibus impedit itaque nisi veniam cumque ex voluptatem 
+        doloribus illo commodi placeat? Ad impedit ut illo vel aperiam modi quae, dolorum officia? 
+        Vel, rem omnis? Vitae, deleniti reiciendis corporis non necessitatibus numquam inventore 
+        nostrum libero, aspernatur doloribus soluta cupiditate natus ullam rem a eveniet aliquid 
+        dolores quidem. Culpa, voluptatum maxime fugiat blanditiis sequi, minus autem eligendi 
+        officiis quisquam velit neque harum inventore consequuntur tenetur quis recusandae pariatur.`,
+        `Iste excepturi dolorem aspernatur laborum magnam maxime, quibusdam fugit 
+        necessitatibus inventore consequuntur culpa veritatis cupiditate, eum 
+        mollitia, dolores nemo enim harum ea quos! Consequatur sequi aliquam fugiat 
+        provident excepturi minus illo ullam, culpa vel omnis, explicabo iusto et. 
+        Totam a quae dolorem nemo, ullam adipisci, exercitationem saepe incidunt, 
+        repudiandae dolores aspernatur vel laudantium quidem asperiores velit unde 
+        tempora alias? Dolores atque, nulla doloremque impedit ipsa, reprehenderit 
+        blanditiis animi, provident officia dignissimos deserunt vel ipsam corrupti 
+        recusandae voluptas suscipit commodi iste beatae quidem rerum ad! Beatae eos, 
+        vero ducimus voluptates recusandae et odio dolorem illum inventore aperiam nemo, 
+        consequuntur asperiores sed deserunt molestias cum. Saepe vitae necessitatibus 
+        harum fuga enim alias. Perspiciatis ea fugiat, praesentium iste possimus doloremque 
+        a, dignissimos sunt repudiandae odit laudantium ab, magnam quia itaque aperiam excepturi. 
+        A, deleniti laboriosam asperiores inventore quod ipsam quo voluptates dolore perferendis 
+        ullam distinctio nam omnis culpa porro atque ab consectetur, enim consequatur aliquam labore velit.`,
+        `Quis architecto minus dicta ea laudantium fuga eum quaerat nihil! In, 
+        possimus. Quibusdam, omnis velit! Tempore enim laudantium alias qui, 
+        nemo ea nesciunt eos beatae accusantium molestiae illum magnam? Animi 
+        autem perspiciatis culpa eius distinctio atque soluta, iure sunt 
+        consequuntur molestiae exercitationem quibusdam sapiente, sed, adipisci 
+        magni nesciunt sit illo dolor totam magnam sequi natus odit quas. 
+        Reprehenderit perspiciatis fugit quaerat iste dolorem neque sunt,
+        maiores eos ad sed, id, optio magnam maxime recusandae atque blanditiis.`,
+        `Tempora vel nihil natus nemo iste necessitatibus tenetur sequi ipsa 
+        nisi iure iusto nostrum reprehenderit quam, praesentium rerum aperiam 
+        esse! Iste cum a, vel laborum officiis voluptatibus aspernatur pariatur 
+        id illo necessitatibus provident quaerat voluptate, in doloribus atque 
+        sequi enim totam numquam eum molestiae! Possimus corrupti laboriosam 
+        necessitatibus quo soluta earum, beatae animi odio nobis, maiores dolorem 
+        sint excepturi fugiat reiciendis quidem facilis atque laborum ea. Ut modi 
+        perspiciatis excepturi doloribus vel ipsa quibusdam, rem corrupti consectetur 
+        fugit quos voluptatem nostrum hic alias minima, provident quae doloremque 
+        explicabo vero quidem voluptates obcaecati sapiente mollitia? Error quo earum 
+        sapiente quis nobis fugiat tenetur optio, sed quod! Quo ducimus laborum magnam 
+        doloremque corporis possimus perferendis rem, nisi delectus voluptates quae saepe, 
+        consequatur nesciunt dolore obcaecati, aperiam recusandae accusamus fuga corrupti veniam vitae?`,
+        `Commodi fugiat obcaecati iusto? Blanditiis soluta explicabo 
+        consequuntur perferendis. Obcaecati perspiciatis sed quia animi, 
+        in vero consequuntur minus adipisci totam est atque nihil earum 
+        dolore, consectetur rerum ut at necessitatibus eos magnam minima 
+        voluptates reiciendis molestiae? Minus qui deserunt fugiat, 
+        voluptatem ab illum sed soluta beatae vitae fugit. Nobis libero cum 
+        ipsum non dolore, similique dolores quos vel, quia illum exercitationem 
+        inventore rem fugiat eius soluta aliquam, culpa aut dicta suscipit 
+        consectetur cupiditate labore? Temporibus magni ab atque velit eum 
+        vero dolor neque aspernatur quasi dolorum provident et deserunt rem ea 
+        dicta optio reprehenderit nihil similique a nesciunt, illo ullam at numquam. 
+        A vero, enim voluptates optio quod aperiam quis culpa ipsam, voluptatibus 
+        sapiente corrupti ex non hic, ratione ducimus architecto. Mollitia sint minima 
+        blanditiis. Ducimus expedita numquam et quos nobis, molestiae repellendus 
+        voluptatibus dolore facilis, maiores quis ipsam laboriosam voluptatem fugit 
+        nesciunt perspiciatis fugiat architecto animi corrupti? Dolores ea explicabo 
+        placeat adipisci sit voluptatem veniam doloribus velit accusantium vero 
+        doloremque illum iusto, exercitationem in pariatur, at enim eius officiis obcaecati architecto.`,
+        `Cumque odio iusto accusamus aliquid nulla et porro praesentium 
+        reprehenderit iste, doloremque amet suscipit sapiente consequatur 
+        voluptatum. Sed vero, nesciunt aspernatur culpa id eius doloribus 
+        minima dolores aliquam qui quasi voluptas? Aliquam fugit rerum 
+        consequuntur. Tempore qui, cum molestias corrupti at hic! Error, 
+        ullam repellendus repudiandae quidem accusantium non, accusamus quam 
+        odit quis recusandae, doloremque sapiente ipsam ad corporis placeat 
+        esse amet iste odio sunt fuga blanditiis! Quos ducimus quibusdam sint 
+        sequi architecto doloremque voluptatem commodi similique blanditiis atque 
+        impedit, animi est cupiditate, numquam laborum cumque accusantium.`,
+        `Quidem saepe possimus consectetur optio ad commodi ipsa perferendis necessitatibus. 
+        Voluptatum facere sed dignissimos, tempore sequi a, beatae officiis, commodi 
+        obcaecati dolorem voluptatibus praesentium corporis fuga consequatur. 
+        Excepturi architecto libero, quam earum consequuntur error provident adipisci 
+        aperiam numquam similique iusto nobis sed in dolorum nisi, deleniti ex, quae 
+        temporibus. Error deserunt ut vitae dignissimos quo, repellendus a. Sequi 
+        nesciunt dolore dolores aut, nisi quibusdam animi ipsum. Quibusdam error nulla, 
+        exercitationem provident dicta, deserunt omnis perspiciatis illo ab qui sequi, 
+        ad repellat eaque molestiae quidem minima laboriosam hic quasi nobis. Aliquam 
+        eos quod natus quasi esse nesciunt nisi deleniti, laborum minus illum nulla 
+        porro modi cum, ducimus tempore! Nesciunt placeat asperiores consequatur sit, 
+        unde incidunt quidem atque, soluta in animi inventore minima accusantium totam 
+        assumenda sed laborum necessitatibus fuga.`,
+        `Aliquam maiores a quia veniam sit ipsum itaque, fugiat asperiores. 
+        Amet, vitae sunt dolorem enim doloribus sint eaque?Lorem ipsum dolor 
+        sit amet consectetur adipisicing elit. Quibusdam enim ab iusto 
+        laboriosam non? Asperiores neque repellendus repellat hic ut!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, adipisci!
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.`,
+       ];
+
+
+        const form = document.querySelector(".form");
+        const paras = document.getElementById("para");
+        const result = document.querySelector(".text");
+
+        form.addEventListener("submit", function(e){
+            e.preventDefault();
+            const value = parseInt(paras.value);
+
+            if(isNaN(value) || value<=0 || value>11 ){
+                const random =Math.floor(Math.random()*text.length);
+                result.innerHTML = `<p class="result">${text[random]}</p>`;
+            } else {
+                let temp = text.slice(0, value);
+                temp = temp.map(function(item){
+                    return `<p class="result">${item}</p>`;
+                })
+                .join("");
+                result.innerHTML = temp;
+            }
+        })
+    </script>
+</body>
+</html>

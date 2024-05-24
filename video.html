@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video</title>
+    <style>
+        .header {
+            height: 100vh;
+            width: 100px;
+            position: relative;
+            display: grid;
+            place-items: center;
+        }
+        .video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            object-fit: cover;
+        }
+        h1 {
+          height: 100vh;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 55px;
+          margin: 0 auto;
+          text-shadow: 30px 30px 30px black;
+        }
+        .btns {
+            position: absolute;
+            bottom: 7%;
+            left: 7%;
+            width: 7rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border: none;
+            background-color: white;
+        }
+        .btns button {
+            font-size: 1rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+    </style>
+  </head>
+  <body></body>
+    <header>
+      <video controls muted autoplay loop class="video">
+        <source src="./video/5739720-hd_1920_1080_24fps.mp4" type="video/mp4" />
+      </video>
+      <h1>Video Project</h1>
+      <div class="btns">
+      <button class="play">Play</button>
+      <button class="pause">Pause</button>
+      </div>
+    </header>
+    <script>
+      const playBtn = document.querySelector(".play");
+        const video = document.querySelector(".video");
+        const pauseBtn = document.querySelector(".pause");
+
+        playBtn.addEventListener('click', function(){
+            video.play();
+        });
+
+        pauseBtn.addEventListener('click', function(){
+            video.pause();
+        });
+    </script>
+  </body>
+</html>
